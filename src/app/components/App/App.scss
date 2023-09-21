@@ -1,0 +1,8 @@
+@use "./variables";
+
+html{
+  color: variables.$dark!important;
+}
+input{
+  border-radius: variables.$border-radius!important;
+}
