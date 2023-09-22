@@ -1,0 +1,21 @@
+@use "../../App/variables";
+@use "../../App/mixin";
+
+.installations-overview {
+
+
+  &__total-number, &__sum {
+    padding: 1rem;
+    background-color: variables.$dark;
+    color: white;
+    border-radius: variables.$border-radius;
+  }
+
+  &__form {
+    @include mixin.grid;
+  }
+
+  &__info {
+    @include mixin.grid;
+  }
+}

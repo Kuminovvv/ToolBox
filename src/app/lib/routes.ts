@@ -1,4 +1,4 @@
 export default {
     HOME: '/',
-    CALCULATOR: '/calulator',
+    INSTALLATIONS_OVERVIEW: '/installations_overview',
 }

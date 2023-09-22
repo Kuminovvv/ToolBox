@@ -1,28 +1,31 @@
+@use "../App/mixin";
 @use "../App/variables";
 
 .home {
-  &__body {
+  &__cards {
+    @include mixin.grid;
+  }
+
+  &__card {
     padding: 2rem;
-  }
-
-  &__total-number, &__sum {
-    padding: 1rem;
-    background-color: variables.$dark;
-    color: white;
+    display: block;
     border-radius: variables.$border-radius;
+    box-shadow: variables.$box-shadow;
+
+    &:hover {
+      background-color: variables.$dark;
+      color: white;
+    }
   }
 
-  &__form {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+  &__title {
+    font-weight: bold;
+    font-size: 1.5rem;
   }
 
-  &__info {
-    margin: 1rem 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    gap: 2rem;
+  &__desc {
+    font-weight: 300;
+    font-size: .9rem;
   }
+
 }
