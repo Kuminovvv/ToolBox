@@ -2,7 +2,7 @@
 @use "../../App/mixin";
 
 .installations-overview {
-
+  @include mixin.card__no-hover;
 
   &__total-number, &__sum {
     padding: 1rem;
@@ -16,6 +16,19 @@
   }
 
   &__info {
-    @include mixin.grid;
+    //@include mixin.grid(16rem);
+  }
+
+  &__table {
+    overflow: auto;
+    max-height: 57vh;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .installations-overview {
+    &__table {
+      max-height: 33vh;
+    }
   }
 }

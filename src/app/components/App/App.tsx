@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import appStateStore from "../../lib/store/app-state-store";
 
 export default observer(() => {
+
     useEffect(() => {
         appStateStore.setStateURL(window.location.pathname)
     }, [])

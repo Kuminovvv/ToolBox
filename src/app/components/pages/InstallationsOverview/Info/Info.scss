@@ -1,0 +1,8 @@
+@use "../../../App/variables";
+.info {
+  &__item {
+    margin-right: .3rem;
+    padding: 1.4rem;
+    border-radius: variables.$border-radius!important;
+  }
+}

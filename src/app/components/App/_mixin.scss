@@ -1,6 +1,27 @@
-@mixin grid{
+@use "variables";
+
+@mixin grid($minmax:18rem) {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax($minmax, 1fr));
+
   gap: 2rem;
   margin-bottom: 2rem;
+}
+
+@mixin card {
+  padding: 2rem;
+  display: block;
+  border-radius: variables.$border-radius;
+  box-shadow: variables.$box-shadow;
+  &:hover {
+    background-color: variables.$dark;
+    color: white;
+  }
+}
+@mixin card__no-hover {
+  padding: 2rem;
+  display: block;
+  border-radius: variables.$border-radius;
+  box-shadow: variables.$box-shadow;
+
 }

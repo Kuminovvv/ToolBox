@@ -8,6 +8,7 @@ import Navbar from "../../../core/components/UI/Navbar/Navbar";
 
 
 export default observer(() => {
+
     return (
         <BrowserRouter basename={routes.HOME}>
             <Navbar/>

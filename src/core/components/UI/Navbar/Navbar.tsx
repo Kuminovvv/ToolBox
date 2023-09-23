@@ -1,19 +1,20 @@
 import {observer} from "mobx-react-lite"
 import './Navbar.scss'
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import routes from "../../../../app/lib/routes";
 import {NavbarData} from "../../../../app/lib/projectData/NavbarData";
 import appStateStore from "../../../../app/lib/store/app-state-store";
 import {useEffect} from "react";
 
 export default observer(() => {
+    const url = useLocation().pathname
 
     useEffect(() => {
-        appStateStore.setStateURL(window.location.pathname)
-    }, [])
+        appStateStore.setStateURL(url)
+    }, [url])
 
     return (
-        <div className="navbar bg-neutral sticky top-0 z-20">
+        <div className="navbar bg-neutral sticky top-0 z-20 animate__animated">
             <div className="flex-none">
                 <div className="dropdown ">
                     <div tabIndex={0} className="btn btn-neutral m-1">
@@ -26,9 +27,9 @@ export default observer(() => {
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-64">
                         {
                             NavbarData.map((dataItem, index) => (
-                                <li onClick={() => appStateStore.setStateURL(dataItem.to)}
+                                <li
                                     key={`Navbar-${index}-li`}>
-                                    <Link to={dataItem.to} >
+                                    <Link to={dataItem.to}>
                                         {dataItem.title}
                                     </Link>
                                 </li>

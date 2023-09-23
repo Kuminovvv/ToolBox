@@ -1,8 +1,30 @@
 @use "./variables";
 
-html{
-  color: variables.$dark!important;
+html {
+  color: variables.$dark !important;
 }
-input{
+
+input {
+  border-radius: variables.$border-radius !important;
+}
+.btn{
   border-radius: variables.$border-radius!important;
 }
+::-webkit-scrollbar {
+  scroll-behavior: smooth!important;
+  width: 10px !important;
+  border-radius: variables.$border-radius-scroll !important;
+
+  &-track {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    border-radius: variables.$border-radius-scroll !important;
+  }
+
+  &-thumb {
+    background-color: variables.$dark !important;
+    border-radius: variables.$border-radius-scroll !important;
+  }
+
+}
+
+

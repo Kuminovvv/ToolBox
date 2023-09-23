@@ -2,63 +2,58 @@ import {observer} from "mobx-react-lite";
 import {CalcPercentSeq} from "../../generic/Function/CalcPercentSeq";
 import CustomInput from "../../UI/CustomInput/CustomInput";
 import './InstallationsOverview.scss'
-
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import installationsOverviewStateStore from "../../../lib/store/installations-overview-state-store";
+import Container from "../../UI/Container/Container";
+import {useLocalStorage} from 'usehooks-ts'
+import Info from "./Info/Info";
 
 export default observer(() => {
+    const [isDarkTheme, setDarkTheme] = useLocalStorage<any>('installationsOverviewStateStore', {})
     const {
-        value,
-        percent,
-        initialValue,
-        installationCost,
         numberInstallations
     } = installationsOverviewStateStore;
 
     useEffect(() => {
-        CalcPercentSeq(Number(percent), Number(value), Number(initialValue))
-    }, [value, percent, initialValue, installationCost])
+        CalcPercentSeq(Number(isDarkTheme.percent), Number(isDarkTheme.value), Number(isDarkTheme.initialValue))
+    }, [isDarkTheme])
 
     return (
-        <div className='installations-overview container mx-auto p-4'>
+        <Container className='installations-overview' panelElement={<Info isDarkTheme={isDarkTheme}/>}>
             <div className='installations-overview__body'>
                 <div className='installations-overview__form'>
                     <CustomInput title={'Начальное число'}
-                                 onChange={(e) => installationsOverviewStateStore.setValue(e.target.value)}
-                                 value={value} type="number"
+                                 onChange={(e) => setDarkTheme({...isDarkTheme, value: e.target.value})}
+                                 value={isDarkTheme.value} type="number"
                                  className="input input-bordered w-full max-w-xs"/>
                     <CustomInput title={'Процент'}
-                                 onChange={(e) => installationsOverviewStateStore.setPercent(e.target.value)}
-                                 value={percent} type="number"
+                                 onChange={(e) => setDarkTheme({...isDarkTheme, percent: e.target.value})}
+                                 value={isDarkTheme.percent} type="number"
                                  className="input input-bordered w-full max-w-xs"/>
                     <CustomInput title={'Количество инсталов'}
-                                 onChange={(e) => installationsOverviewStateStore.setInitialValue(e.target.value)}
-                                 value={initialValue} type="number"
+                                 onChange={(e) => setDarkTheme({...isDarkTheme, initialValue: e.target.value})}
+                                 value={isDarkTheme.initialValue} type="number"
                                  className="input input-bordered w-full max-w-xs"/>
                     <CustomInput title={'Стоимость 1-го инстала'}
-                                 onChange={(e) => installationsOverviewStateStore.setInstallationCost(e.target.value)}
-                                 value={installationCost} type="number"
+                                 onChange={(e) => setDarkTheme({...isDarkTheme, installationCost: e.target.value})}
+                                 value={isDarkTheme.installationCost} type="number"
                                  className="input input-bordered w-full max-w-xs"/>
                 </div>
-                <div className='installations-overview__info'>
-                    <div className='installations-overview__total-number'>
-                        Общее количество
-                        - {numberInstallations.reduce((a, b) => a + b, 0).toLocaleString('ru')}
-                    </div>
-                    <div className='installations-overview__sum'>
-                        Сумма
-                        - {(numberInstallations.reduce((a, b) => a + b, 0) * Number(installationCost)).toLocaleString('ru')} ₽
-                    </div>
+
+                <div className='installations-overview__table'>
+                    {
+                        numberInstallations.length > 2 &&
+                        numberInstallations.map((num, index) => (
+                            <div key={`installations-overview-${index}`} className='mb-2'>
+                                {index + 1}-й день - {num}
+                            </div>
+                        ))
+                    }
                 </div>
-                {
-                    numberInstallations.length > 2 &&
-                    numberInstallations.map((num, index) => (
-                        <div key={`installations-overview-${index}`} className='mb-2'>
-                            {index + 1} День - {num}
-                        </div>
-                    ))
-                }
             </div>
-        </div>
+        </Container>
     )
 })
+
+
+

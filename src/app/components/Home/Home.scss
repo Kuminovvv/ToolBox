@@ -7,15 +7,7 @@
   }
 
   &__card {
-    padding: 2rem;
-    display: block;
-    border-radius: variables.$border-radius;
-    box-shadow: variables.$box-shadow;
-
-    &:hover {
-      background-color: variables.$dark;
-      color: white;
-    }
+    @include mixin.card;
   }
 
   &__title {
