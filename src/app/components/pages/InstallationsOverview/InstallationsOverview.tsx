@@ -2,7 +2,6 @@ import {observer} from "mobx-react-lite";
 import {CalcPercentSeq} from "../../generic/Function/CalcPercentSeq";
 import CustomInput from "../../UI/CustomInput/CustomInput";
 import './InstallationsOverview.scss'
-
 import {useEffect} from "react";
 import installationsOverviewStateStore from "../../../lib/store/installations-overview-state-store";
 
@@ -62,3 +61,6 @@ export default observer(() => {
         </div>
     )
 })
+
+
+
