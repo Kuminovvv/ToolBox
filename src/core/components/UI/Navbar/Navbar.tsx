@@ -16,20 +16,20 @@ export default observer(() => {
     return (
         <div className="navbar bg-neutral sticky top-0 z-20 animate__animated">
             <div className="flex-none">
-                <div className="dropdown ">
-                    <div tabIndex={0} className="btn btn-neutral m-1">
+                <div className='dropdown'>
+                    <label tabIndex={2} className="btn btn-neutral m-1">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                              className="inline-block w-5 h-5 stroke-current">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                                   d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
-                    </div>
-                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-64">
+                    </label>
+                    <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                         {
                             NavbarData.map((dataItem, index) => (
                                 <li
                                     key={`Navbar-${index}-li`}>
-                                    <Link to={dataItem.to}>
+                                    <Link   tabIndex={2} to={dataItem.to}>
                                         {dataItem.title}
                                     </Link>
                                 </li>
@@ -37,6 +37,7 @@ export default observer(() => {
                         }
                     </ul>
                 </div>
+
             </div>
             <div className="flex-1">
                 <Link to={routes.HOME} className="btn btn-ghost normal-case text-lg text-white p-0">ToolBox

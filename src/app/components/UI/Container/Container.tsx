@@ -13,9 +13,10 @@ interface IContainer {
 
 const Container = ({className, children, panelElement}: IContainer) => {
     return (
-        <div className={`container mx-auto pt-8 custom-animation `}>
+        <div className={`container mx-auto pt-4 custom-animation `}>
             {
-                appStateStore.stateURL !== '/' && <div className='flex justify-between'>
+                appStateStore.stateURL !== '/' &&
+                <div className='flex justify-between sticky'>
                     <Link to={'/'} className='btn mb-8'>
                         <FontAwesomeIcon icon={faArrowLeft}/>
                     </Link>

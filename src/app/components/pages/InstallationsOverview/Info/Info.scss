@@ -1,8 +1,17 @@
 @use "../../../App/variables";
+
 .info {
   &__item {
-    margin-right: .3rem;
-    padding: 1.4rem;
-    border-radius: variables.$border-radius!important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    min-height: 3rem;
+    border-radius: variables.$border-radius !important;
+    margin-right: 5px;
+    font-size: clamp(12px, 14px, 16px);
   }
 }
