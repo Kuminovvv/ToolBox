@@ -29,7 +29,7 @@ const Info = ({isDarkTheme}: Interface) => {
                         <ul
                             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                             <li className='p-2'>
-                                Общ.колл
+                                Общ.кол-во
                                 - {isNaN(totalNumber) ? '0' : totalNumber.toLocaleString('ru')}
                             </li>
                             <li className='p-2'>
@@ -37,7 +37,7 @@ const Info = ({isDarkTheme}: Interface) => {
                                 - {isNaN(summ) ? '0' : summ.toLocaleString('ru')} ₽
 
                             </li>
-                            <li className='p-2'>Колл.дн
+                            <li className='p-2'>Кол-во.дн
                                 - {numberInstallations.length}</li>
                             <CopyButton data={numberInstallations} isDarkTheme={isDarkTheme}/>
                         </ul>

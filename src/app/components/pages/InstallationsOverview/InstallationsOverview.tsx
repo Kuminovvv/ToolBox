@@ -26,15 +26,15 @@ export default observer(() => {
                                  onChange={(e) => setDarkTheme({...isDarkTheme, value: e.target.value})}
                                  value={isDarkTheme.value} type="number"
                                  className="input input-bordered w-full max-w-xs"/>
-                    <CustomInput title={'Процент'}
+                    <CustomInput title={'Прогрессия'}
                                  onChange={(e) => setDarkTheme({...isDarkTheme, percent: e.target.value})}
                                  value={isDarkTheme.percent} type="number"
                                  className="input input-bordered w-full max-w-xs"/>
-                    <CustomInput title={'Количество инсталов'}
+                    <CustomInput title={'Количество установок'}
                                  onChange={(e) => setDarkTheme({...isDarkTheme, initialValue: e.target.value})}
                                  value={isDarkTheme.initialValue} type="number"
                                  className="input input-bordered w-full max-w-xs"/>
-                    <CustomInput title={'Стоимость 1-го инстала'}
+                    <CustomInput title={'Стоимость 1-ой установки'}
                                  onChange={(e) => setDarkTheme({...isDarkTheme, installationCost: e.target.value})}
                                  value={isDarkTheme.installationCost} type="number"
                                  className="input input-bordered w-full max-w-xs"/>
