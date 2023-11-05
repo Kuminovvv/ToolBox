@@ -12,21 +12,24 @@
   }
 
   &__form {
-    @include mixin.grid(14rem);
+    @include mixin.grid(17rem);
   }
 
 
 
   &__table {
     overflow: auto;
-    max-height: 57vh;
+    max-height: 50vh;
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1439px) {
   .installations-overview {
     &__table {
-      max-height: 33vh;
+      max-height: 30vh;
+    }
+    &__form {
+      @include mixin.grid(13rem);
     }
   }
 }

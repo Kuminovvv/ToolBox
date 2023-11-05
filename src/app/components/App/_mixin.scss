@@ -20,7 +20,7 @@
 }
 @mixin card__no-hover {
   padding: 2rem;
-  display: block;
+  display: block!important;
   border-radius: variables.$border-radius;
   box-shadow: variables.$box-shadow;
 
