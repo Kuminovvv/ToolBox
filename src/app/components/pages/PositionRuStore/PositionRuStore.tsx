@@ -44,9 +44,8 @@ export default observer(() => {
                     <table className="table  table-pin-rows table-pin-cols">
                         <thead>
                         <tr>
+                            <th></th>
                             <th>Название</th>
-                            <th>Рейтинг</th>
-                            <th>Название пакета</th>
                         </tr>
                         </thead>
                         {
@@ -55,6 +54,9 @@ export default observer(() => {
                                 <tbody key={`position-ru-store-${item.appName}-${item.positionRate}`}>
                                 <tr>
 
+                                    <td>
+                                        {item.positionRate}
+                                    </td>
                                     <td>
                                         <div className="flex items-center gap-3">
                                             <div className="avatar">
@@ -66,19 +68,10 @@ export default observer(() => {
                                             </div>
                                             <div>
                                                 <div className="font-bold">   {item.appName}</div>
-                                                <div className="text-sm opacity-50">{item.category}</div>
-                                                <div className="text-sm opacity-50">{item.positionRate}</div>
+                                                <div className="text-sm opacity-50">{request}</div>
                                             </div>
                                         </div>
                                     </td>
-
-                                    <td>
-                                        <div>
-                                            <div className="font-bold">   {item.averageUserRating}</div>
-                                            <div className="text-sm opacity-50">{item.totalRatings}</div>
-                                        </div>
-                                    </td>
-                                    <td>{item.packageName}</td>
                                 </tr>
                                 </tbody>
                             ))
