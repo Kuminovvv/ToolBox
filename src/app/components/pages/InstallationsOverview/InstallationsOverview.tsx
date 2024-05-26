@@ -7,7 +7,6 @@ import installationsOverviewStateStore from "../../../lib/store/installations-ov
 import Container from "../../UI/Container/Container";
 import {useLocalStorage} from 'usehooks-ts'
 import Info from "./Info/Info";
-import Toaster from "../../../../core/lib/toaster/toaster";
 import {toast} from "react-toastify";
 
 export default observer(() => {
@@ -21,14 +20,14 @@ export default observer(() => {
     }, [isDarkTheme])
     const onChangeValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         if (Number(e.target.value) < 0) {
-            new Toaster({msg: 'Число не может быть отрицательным', type: toast.TYPE.WARNING})
+            toast.warning("Число не может быть отрицательным")
         } else {
             setDarkTheme({...isDarkTheme, value: e.target.value})
         }
     }, [isDarkTheme, setDarkTheme])
     const onChangePercent = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         if (Number(e.target.value) < 0) {
-            new Toaster({msg: 'Число не может быть отрицательным', type: toast.TYPE.WARNING})
+            toast.warning("Число не может быть отрицательным")
         } else {
             setDarkTheme({...isDarkTheme, percent: e.target.value})
         }
@@ -36,14 +35,14 @@ export default observer(() => {
 
     const onChangeInitialValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         if (Number(e.target.value) < 0) {
-            new Toaster({msg: 'Число не может быть отрицательным', type: toast.TYPE.WARNING})
+            toast.warning("Число не может быть отрицательным")
         } else {
             setDarkTheme({...isDarkTheme, initialValue: e.target.value})
         }
     }, [isDarkTheme, setDarkTheme])
     const onChangeInstallationCost = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         if (Number(e.target.value) < 0) {
-            new Toaster({msg: 'Число не может быть отрицательным', type: toast.TYPE.WARNING})
+            toast.warning("Число не может быть отрицательным")
         } else {
             setDarkTheme({...isDarkTheme, installationCost: e.target.value})
         }

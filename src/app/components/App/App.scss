@@ -1,6 +1,6 @@
 @use "./variables";
 
-html,body {
+html, body {
   color: variables.$dark !important;
   scrollbar-gutter: stable;
 }
@@ -34,4 +34,11 @@ input {
 
 }
 
+.Toastify__toast {
+  border-radius: variables.$border-radius_small!important;
+  box-shadow: variables.$box-shadow!important;
+  &-container {
 
+    padding: 0 !important;
+  }
+}

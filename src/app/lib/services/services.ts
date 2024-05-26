@@ -1,30 +1,26 @@
 import axios from "axios";
-import Toaster from "../../../core/lib/toaster/toaster";
 import {toast} from "react-toastify";
 
 export default {
     async getPositionRuStore(request: string) {
         const positionSize = 500;
-
-        let result;
         const url = `https://backapi.rustore.ru/applicationData/apps?query=${request}&pageSize=${positionSize}`;
+        const id = toast.loading("Данные загружаются...");
 
-        // Сообщение о начале запроса
-        new Toaster({msg: 'Запрос выполняется...', type: toast.TYPE.INFO});
-
-        await axios
-            .get(url)
-            .then((res) => {
-                result = res.data.body.content;
-            })
-            .catch(() => {
-                new Toaster({msg: 'Регион не определён', type: toast.TYPE.ERROR});
-            })
-            .finally(() => {
-                new Toaster({msg: 'Запрос завершен', type: toast.TYPE.SUCCESS});
+        try {
+            const res = await axios.get(url);
+            toast.update(id, {
+                render: "Запрос выполнился",
+                type: "success",
+                isLoading: false,
+                closeButton: true,
+                autoClose: 5000
             });
-
-        return result;
+            return res.data.body.content;
+        } catch {
+            toast.update(id, {render: "Запрос не удался", type: "warning", isLoading: false});
+            return null;
+        }
     }
 
 
