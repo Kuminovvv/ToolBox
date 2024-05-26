@@ -3,7 +3,7 @@
 @mixin grid($minmax:18rem) {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax($minmax, 1fr));
-
+//align-items: end;
   gap: 2rem;
   margin-bottom: 2rem;
 }

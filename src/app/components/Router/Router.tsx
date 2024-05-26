@@ -6,6 +6,7 @@ import routes from "../../lib/routes";
 import PageInstallationsOverview from "../pages/InstallationsOverview/InstallationsOverview";
 import Navbar from "../../../core/components/UI/Navbar/Navbar";
 import {Logo} from "../pages/Logo/Logo";
+import PositionRuStore from "../pages/PositionRuStore/PositionRuStore";
 
 
 export default observer(() => {
@@ -16,6 +17,7 @@ export default observer(() => {
             <Switch>
                 <Route exact path={routes.HOME} component={Home}/>
                 <Route exact path={routes.INSTALLATIONS_OVERVIEW} component={PageInstallationsOverview}/>
+                <Route exact path={routes.POSITION_RUSTORE} component={PositionRuStore}/>
                 <Route exact path={routes.LOGO} component={Logo}/>
                 <Redirect from="*" to={routes.HOME}/>
             </Switch>

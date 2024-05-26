@@ -1,22 +1,29 @@
 @use "./variables";
 
-html {
+html,body {
   color: variables.$dark !important;
+  scrollbar-gutter: stable;
 }
 
 input {
   border-radius: variables.$border-radius !important;
 }
-.btn{
-  border-radius: variables.$border-radius!important;
+
+.btn {
+  border-radius: variables.$border-radius !important;
 }
+
+//::-webkit-scrollbar:hover {
+//  width: 12px !important;
+//  transition: width 0.3s;
+//}
+
 ::-webkit-scrollbar {
-  scroll-behavior: smooth!important;
-  width: 10px !important;
+  scroll-behavior: smooth !important;
+  width: 8px !important;
   border-radius: variables.$border-radius-scroll !important;
 
   &-track {
-    background-color: rgba(0, 0, 0, 0.1) !important;
     border-radius: variables.$border-radius-scroll !important;
   }
 

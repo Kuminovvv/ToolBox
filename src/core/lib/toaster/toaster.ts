@@ -2,12 +2,6 @@ import 'animate.css'
 import {cssTransition,  toast, TypeOptions} from 'react-toastify'
 import './toaster.scss'
 import 'react-toastify/dist/ReactToastify.css';
-
-/**
- * Toaster
- * Pool up messenger of app.
- * Dont set this file!!!
- */
 const fade = cssTransition({
     enter: "animate__animated animate__bounceIn",
     exit: "animate__animated animate__bounceOut",
@@ -33,7 +27,7 @@ class Toaster implements IToaster {
     notify(msg: string, type?: TypeOptions): void {
 
         // @ts-ignore
-        this.toastId = toast(msg, { type: type, autoClose: 10000, transition: fade ,position: "bottom-left",
+        this.toastId = toast(msg, { type: type, autoClose: 10000, transition: fade ,position: "top-center",
             hideProgressBar: true,
             closeOnClick: true,
             pauseOnHover: true,
@@ -44,7 +38,6 @@ class Toaster implements IToaster {
 
         if (msgs.length > 2) {
             msgs.forEach((id:number) => {
-                console.log(id)
                 toast.dismiss(id)
             })
 

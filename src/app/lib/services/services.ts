@@ -1,27 +1,31 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access,  @typescript-eslint/no-unsafe-call*/
-
-// import axios from 'axios'
-
+import axios from "axios";
+import Toaster from "../../../core/lib/toaster/toaster";
+import {toast} from "react-toastify";
 
 export default {
-    async getIp() {
-        // loansStateStore.setStateLoader(true)
-        // let result: string = ''
-        // const url = 'https://ipgeolocation.abstractapi.com/v1/?api_key=af772993d8ce4dada5690c0645f83e7e'
-        // await axios
-        //     .get(url)
-        //     .then((res) => {
-        //         result = res.data.country_code
-        //
-        //     })
-        //     .catch(() => {
-        //         // new Toaster({msg: 'Регион не определён', type: toast.TYPE.ERROR})
-        //     })
-        //     .then(() => {
-        //         loansStateStore.setStateLoader(false)
-        //     })
+    async getPositionRuStore(request: string) {
+        const positionSize = 500;
 
-        // return result
-    },
+        let result;
+        const url = `https://backapi.rustore.ru/applicationData/apps?query=${request}&pageSize=${positionSize}`;
+
+        // Сообщение о начале запроса
+        new Toaster({msg: 'Запрос выполняется...', type: toast.TYPE.INFO});
+
+        await axios
+            .get(url)
+            .then((res) => {
+                result = res.data.body.content;
+            })
+            .catch(() => {
+                new Toaster({msg: 'Регион не определён', type: toast.TYPE.ERROR});
+            })
+            .finally(() => {
+                new Toaster({msg: 'Запрос завершен', type: toast.TYPE.SUCCESS});
+            });
+
+        return result;
+    }
+
 
 }

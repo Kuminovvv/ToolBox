@@ -1,0 +1,8 @@
+@use "../../App/variables";
+@use "../../App/mixin";
+.position-ru-store{
+  &__form{
+    @include mixin.grid(17rem);
+    align-items: end;
+  }
+}

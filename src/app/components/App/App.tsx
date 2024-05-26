@@ -5,7 +5,6 @@ import { ToastContainer } from "react-toastify";
 
 export default observer(() => {
 
-
     return (
         <div>
             <ToastContainer/>
