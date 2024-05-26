@@ -14,8 +14,8 @@
   border-radius: variables.$border-radius;
   box-shadow: variables.$box-shadow;
   &:hover {
-    background-color: variables.$dark;
-    color: white;
+    background-color: variables.$grey;
+    color: variables.$dark;
   }
 }
 @mixin card__no-hover {

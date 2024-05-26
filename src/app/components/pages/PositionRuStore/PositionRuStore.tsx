@@ -1,10 +1,9 @@
 import {observer} from "mobx-react-lite";
 
-import React, {ChangeEvent, useCallback, useEffect, useState} from "react";
+import React, {ChangeEvent, useCallback, useState} from "react";
 import positionRustoreStateStore from "../../../lib/store/position-ru-store-state-store";
 import CustomInput from "../../UI/CustomInput/CustomInput";
 import './PositionRuStore.scss'
-import Info from "../InstallationsOverview/Info/Info";
 import Container from "../../UI/Container/Container";
 
 export default observer(() => {

@@ -1,52 +1,59 @@
-import {observer} from "mobx-react-lite"
-import './Navbar.scss'
-import {Link, useLocation} from "react-router-dom";
-import routes from "../../../../app/lib/routes";
-import {NavbarData} from "../../../../app/lib/projectData/NavbarData";
-import appStateStore from "../../../../app/lib/store/app-state-store";
-import {useEffect} from "react";
+import { observer } from "mobx-react-lite";
+import './Navbar.scss';
+import { Link } from "react-router-dom";
+import { NavbarData } from "../../../../app/lib/projectData/NavbarData";
+import React, { useState, useEffect } from "react";
+import { Icons } from "../../../lib/Icons/Icons";
 
 export default observer(() => {
-    const url = useLocation().pathname
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const handleDropdownClick = (event: React.MouseEvent) => {
+        event.preventDefault();
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
+    const handleLinkClick = () => {
+        setIsDropdownOpen(false);
+    };
+
+    const handleOutsideClick = (event: MouseEvent) => {
+        if (!document.querySelector('.dropdown')?.contains(event.target as Node)) {
+            setIsDropdownOpen(false);
+        }
+    };
 
     useEffect(() => {
-        appStateStore.setStateURL(url)
-    }, [url])
+        document.addEventListener('click', handleOutsideClick);
+        return () => {
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, []);
 
     return (
-        <div className="navbar bg-white sticky top-0 z-20 animate__animated">
-            <div className="flex-none">
-                <div className='dropdown'>
-                    <label tabIndex={2} className="btn btn-ghost m-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                             className="inline-block w-5 h-5 stroke-current">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                  d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </label>
-                    <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+        <div className="navbar bg-base-100">
+            <div className="navbar-start">
+                <details className="dropdown" open={isDropdownOpen} onClick={handleDropdownClick}>
+                    <summary className="m-1 btn btn-ghost">{Icons.bars3BottomLeft}</summary>
+                    <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         {
-                            NavbarData.map((dataItem, index) => (
-                                <li
-                                    key={`Navbar-${index}-li`}>
-                                    <Link tabIndex={2} to={dataItem.to}>
-                                        {dataItem.title}
+                            NavbarData.map((item: any) => (
+                                <li key={item.to}>
+                                    <Link to={item.to} onClick={handleLinkClick}>
+                                        {item.title}
                                     </Link>
                                 </li>
                             ))
                         }
                     </ul>
-                </div>
-
+                </details>
             </div>
-            <div className="flex-1">
-                <Link to={routes.HOME} className="btn btn-ghost normal-case text-lg p-0">
-                    ToolBox
-                </Link>
+            <div className="navbar-center">
+                <a className="btn btn-ghost text-xl">ToolBox</a>
             </div>
-            <div className="flex-none">
+            <div className="navbar-end">
 
             </div>
         </div>
-    )
-})
+    );
+});

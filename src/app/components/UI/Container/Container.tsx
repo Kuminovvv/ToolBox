@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import appStateStore from "../../../lib/store/app-state-store";
 import './Container.scss'
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
@@ -12,10 +12,11 @@ interface IContainer {
 }
 
 const Container = ({className, children, panelElement}: IContainer) => {
+    const url = useLocation().pathname
     return (
         <div className={`container mx-auto pt-4 custom-animation `}>
             {
-                appStateStore.stateURL !== '/' &&
+                url !== '/' &&
                 <div className='flex justify-between sticky'>
                     <Link to={'/'} className='btn mb-8'>
                         <FontAwesomeIcon icon={faArrowLeft}/>
