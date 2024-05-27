@@ -4,6 +4,7 @@ import appStateStore from "../../../lib/store/app-state-store";
 import './Container.scss'
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {NavbarData} from "../../../lib/projectData/NavbarData";
 
 interface IContainer {
     className?: string
@@ -20,6 +21,11 @@ const Container = ({className, children, panelElement}: IContainer) => {
                 <div className='flex justify-between sticky'>
                     <Link to={'/'} className='btn mb-8'>
                         <FontAwesomeIcon icon={faArrowLeft}/>
+                        {
+                            NavbarData.map((dataItem, index) => (
+                                url===dataItem.to&&dataItem.title
+                            ))
+                        }
                     </Link>
                     <>
                         {panelElement}

@@ -1,11 +1,12 @@
-import { observer } from "mobx-react-lite";
+import {observer} from "mobx-react-lite";
 import './Navbar.scss';
-import { Link } from "react-router-dom";
-import { NavbarData } from "../../../../app/lib/projectData/NavbarData";
-import React, { useState, useEffect } from "react";
-import { Icons } from "../../../lib/Icons/Icons";
+import {Link, useLocation} from "react-router-dom";
+import {NavbarData} from "../../../../app/lib/projectData/NavbarData";
+import React, {useState, useEffect} from "react";
+import {Icons} from "../../../lib/Icons/Icons";
 
 export default observer(() => {
+    const url = useLocation().pathname
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const handleDropdownClick = (event: React.MouseEvent) => {
@@ -31,7 +32,7 @@ export default observer(() => {
     }, []);
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 sticky top-0 z-20">
             <div className="navbar-start">
                 <details className="dropdown" open={isDropdownOpen} onClick={handleDropdownClick}>
                     <summary className="m-1 btn btn-ghost">{Icons.bars3BottomLeft}</summary>
@@ -39,7 +40,8 @@ export default observer(() => {
                         {
                             NavbarData.map((item: any) => (
                                 <li key={item.to}>
-                                    <Link to={item.to} onClick={handleLinkClick}>
+                                    <Link className={`btn btn-ghost justify-start ${url === item.to && 'btn-active'}`} to={item.to}
+                                          onClick={handleLinkClick}>
                                         {item.title}
                                     </Link>
                                 </li>
